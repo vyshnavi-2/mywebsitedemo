@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+    <h1>Running Tests...</h1>
+    <div id="results"></div>
+
+    <script>
+        // Simple tests for our website
+        function runTests() {
+            let results = document.getElementById('results');
+            let allPassed = true;
+
+            // Test 1: Check if title exists
+            if (document.title) {
+                results.innerHTML += '<p style="color: green;">✅ Test 1 Passed: Title exists</p>';
+            } else {
+                results.innerHTML += '<p style="color: red;">❌ Test 1 Failed: No title</p>';
+                allPassed = false;
+            }
+
+            // Test 2: Check if body exists
+            if (document.body) {
+                results.innerHTML += '<p style="color: green;">✅ Test 2 Passed: Body exists</p>';
+            } else {
+                results.innerHTML += '<p style="color: red;">❌ Test 2 Failed: No body</p>';
+                allPassed = false;
+            }
+
+            // Final result
+            if (allPassed) {
+                results.innerHTML += '<h2 style="color: green;">🎉 All Tests Passed!</h2>';
+            } else {
+                results.innerHTML += '<h2 style="color: red;">❌ Some Tests Failed!</h2>';
+            }
+        }
+
+        // Run tests when page loads
+        window.onload = runTests;
+    </script>
+</body>
+</html>
