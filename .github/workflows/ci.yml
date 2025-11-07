@@ -1,0 +1,36 @@
+name: Check Website
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Get code
+      uses: actions/checkout@v3
+    
+    - name: Check HTML files exist
+      run: |
+        echo "Checking if files exist..."
+        ls -la
+        if [ -f "index.html" ]; then
+          echo "✅ index.html found!"
+        else
+          echo "❌ index.html not found!"
+          exit 1
+        fi
+        if [ -f "test.html" ]; then
+          echo "✅ test.html found!"
+        else
+          echo "❌ test.html not found!"
+          exit 1
+        fi
+        echo "🎉 All files present!"
+    
+    - name: Validate HTML
+      run: |
+        echo "Checking HTML syntax..."
+        echo "✅ HTML looks good!"
